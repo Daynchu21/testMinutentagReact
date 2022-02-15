@@ -26,8 +26,13 @@ export function FocusableInput({ focusable = false }) {
 	const inputRef = createRef();
 	
 	useEffect(()=> {
-		if(!focusable)
-		inputRef.current.focus()
+	
+		function setFocus () {
+			if(!focusable)
+			inputRef.current.focus()
+		}
+		
+		setFocus()
 	},[])
 
 	useEffect(() =>
