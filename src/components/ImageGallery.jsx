@@ -14,7 +14,7 @@ function Image({ src, onRemove,isVisible }) {
 		{
 			isVisible &&	
 			<div className="image">
-			<img src={src} />
+			<img src={src} alt="ImageLink"/>
 			<button className="remove" onClick={() => {onRemove()}}>X</button>
 		</div> 
 		}

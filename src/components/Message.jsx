@@ -16,7 +16,7 @@ export function Message() {
 
 	return (
 		<>
-			<a href="#" onClick={() => {SetIsVisible(!IsVisible)}}>Want to buy a new car?</a>
+			<a href="/#" onClick={() => {SetIsVisible(!IsVisible)}}>Want to buy a new car?</a>
 			{
 				IsVisible && 	<p>Call +11 22 33 44 now!</p>
 			}
