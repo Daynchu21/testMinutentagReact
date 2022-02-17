@@ -1,3 +1,5 @@
+import * as React from "react"
+import "./Rating.css"
 /**
  * The Rating component consists in a container with 5 stars.
  * Each star is represented by a <span /> element.
@@ -24,6 +26,24 @@
  * </div>
  */
 
-export function Rating() {
-	return null;
+export default function Rating() {
+
+	const [rating,SetRating] = React.useState(0)
+	return (
+		<div id='rating'>
+			{
+				[...Array(5)].map((star, index) => {
+					const givenRating = index + 1;
+					return(
+					<span className={givenRating <= rating ? "active": undefined } style={{fontSize:55}}  onClick={() => {SetRating(givenRating)}} key={index} >*</span>
+					)
+				})
+			}
+				 {/* <span>*</span>
+				 <span>*</span>
+				 <span>*</span>
+				 <span>*</span>
+				 <span>*</span> */}
+			</div>
+	);
 }

@@ -1,3 +1,5 @@
+import * as React from "react";
+
 /**
  * You have a Grocery component, which receives a list of products, each one with name and votes.
  * - The app should render an unordered list, with a list item for each product.
@@ -22,30 +24,49 @@
  *   </ul>
  */
 
+
 function Product(props) {
-	function handlePlus() {
+	const[update,setUpdate] = React.useState(false)
+	function handlePlus(product) {
 		// logic to vote a product
+		product.votes=product.votes+1
+		setUpdate(!update)
 	}
 
-	function handleMinus() {
+	function handleMinus(product) {
 		// logic to unvote a product
+			product.votes=product.votes-1
+			setUpdate(!update)
 	}
-
 	return (
-		<li>
-			<span>
-				{/* Product name */} - votes: {/* Number of votes*/}
-			</span>
-			<button onClick={handlePlus}>+</button>
-			<button onClick={handleMinus}>-</button>
-		</li>
+		<div>
+		{
+			props.products.current !== null && props.products.current !== undefined && 
+				props.products.current.map((data,index) => {
+					return(
+					<li key={index.toString()}>
+					<span>
+					   {data.name} - votes: {data.votes}
+					</span>
+					<button onClick={() => {handlePlus(data)}}>+</button>
+				   <button onClick={() => {handleMinus(data)}}>-</button>
+				</li>
+				)
+				})
+		}
+		</div>
+		
 	);
 }
 
-export function Grocery({ products }) {
+
+export default function Grocery({ products }) {
+	// export default function Grocery() {
+		const newProducts = React.useRef(products);
 	return (
 		<ul>
 			{/* Render an array of products, which should call onVote when + or - is clicked */}
+			<Product products={newProducts}/>
 		</ul>
 	);
 }

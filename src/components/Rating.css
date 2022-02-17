@@ -1,0 +1,8 @@
+.active{
+    color:yellow;
+    cursor: pointer;
+}
+
+#rating:hover{
+cursor: pointer;
+}
